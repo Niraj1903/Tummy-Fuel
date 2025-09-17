@@ -2,8 +2,15 @@ import React from "react";
 import { RESTURANT_IMAGE } from "../utils/constants";
 
 const ResturantCards = ({ resItem }) => {
-  const { avgRating, cloudinaryImageId, name, cuisines, areaName, sla } =
-    resItem.info;
+  const {
+    avgRating,
+    cloudinaryImageId,
+    name,
+    cuisines,
+    areaName,
+    sla,
+    aggregatedDiscountInfoV3,
+  } = resItem.info;
   return (
     <>
       <div className="w-[240px] bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all">
@@ -14,6 +21,12 @@ const ResturantCards = ({ resItem }) => {
             src={RESTURANT_IMAGE + cloudinaryImageId}
             alt={name}
           />
+          {aggregatedDiscountInfoV3 && (
+            <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-70 text-white text-sm font-semibold px-2 py-1">
+              {aggregatedDiscountInfoV3?.header}{" "}
+              {aggregatedDiscountInfoV3?.subHeader}
+            </div>
+          )}
         </div>
 
         <div className="p-3">
