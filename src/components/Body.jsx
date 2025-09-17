@@ -1,26 +1,9 @@
-import React, { useEffect, useState } from "react";
 import ResturantCards from "./ResturantCards";
-import { SWIGGY_API } from "../utils/constants";
 import Shimmer from "./Shimmer";
+import useResturantData from "../utils/useResturantData";
 
 const Body = () => {
-  const [listOfResturant, setListOfResturant] = useState([]);
-  const fetchData = async () => {
-    const data = await fetch(SWIGGY_API);
-    const jsonData = await data.json();
-    console.log(
-      jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-    setListOfResturant(
-      jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const listOfResturant = useResturantData();
 
   return (
     <>

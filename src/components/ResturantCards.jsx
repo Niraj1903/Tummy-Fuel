@@ -3,7 +3,7 @@ import { RESTURANT_IMAGE } from "../utils/constants";
 
 const ResturantCards = ({ resItem }) => {
   const { avgRating, cloudinaryImageId, name, cuisines, areaName, sla } =
-    resItem?.info;
+    resItem.info;
   return (
     <>
       <div className="w-[240px] bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all">
