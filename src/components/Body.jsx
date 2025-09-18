@@ -7,7 +7,12 @@ import { IoSearchOutline } from "react-icons/io5";
 const Body = () => {
   const [inputText, setInputText] = useState("");
 
-  const { listOfResturant, setListOfResturant } = useResturantData(); // Custom hook for fetching the swiggy API
+  const {
+    listOfResturant,
+    setListOfResturant,
+    filteredResturant,
+    setFilteredResturant,
+  } = useResturantData(); // Custom hook for fetching the swiggy API
 
   const topRatedResturant = () => {
     setListOfResturant(
@@ -17,6 +22,14 @@ const Body = () => {
       on Click of top Rated button */
     );
   };
+
+  const filterResturantOnName = () => {
+    const filtered = listOfResturant.filter((item) =>
+      item?.info?.name.toLowerCase().includes(inputText.toLowerCase())
+    ); //filter the resturant based name
+    setFilteredResturant(filtered);
+  };
+  if (!listOfResturant) return;
 
   return (
     <>
@@ -34,7 +47,10 @@ const Body = () => {
           placeholder="Find Resturant"
           value={inputText}
         />
-        <button className="border border-gray-600 rounded-r-xl px-2 py-1">
+        <button
+          onClick={() => filterResturantOnName()}
+          className="border border-gray-600 rounded-r-xl px-2 py-1"
+        >
           <IoSearchOutline />
         </button>
       </div>
@@ -43,7 +59,7 @@ const Body = () => {
         <Shimmer />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 m-2">
-          {listOfResturant.map((item) => (
+          {filteredResturant.map((item) => (
             <ResturantCards key={item?.info?.id} resItem={item} />
           ))}
         </div>
