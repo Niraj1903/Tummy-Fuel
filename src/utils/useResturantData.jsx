@@ -15,7 +15,7 @@ const useResturantData = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  return listOfResturant;
+  return { listOfResturant, setListOfResturant };
 };
 
 export default useResturantData;
