@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Link } from "react-router-dom";
 const Header = () => {
   const [btn, setBtn] = useState("Login");
   return (
@@ -8,8 +8,12 @@ const Header = () => {
         <img className="h-auto w-[80px]" src="/tummyFuel.png" alt="logo" />
 
         <ul className="flex space-x-6 text-gray-800">
-          <li className="cursor-pointer hover:text-orange-500">Home</li>
-          <li className="cursor-pointer hover:text-orange-500">About Us</li>
+          <Link to={"/"}>
+            <li className="cursor-pointer hover:text-orange-500">Home</li>
+          </Link>
+          <Link to={"/about"}>
+            <li className="cursor-pointer hover:text-orange-500">About Us</li>
+          </Link>
           <li className="cursor-pointer hover:text-orange-500">Contact Us</li>
           <li className="cursor-pointer hover:text-orange-500">Cart</li>
           <li className="cursor-pointer hover:text-orange-500">
