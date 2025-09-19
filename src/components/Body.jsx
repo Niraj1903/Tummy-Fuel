@@ -31,26 +31,31 @@ const Body = () => {
   if (!filteredResturant) return;
   return (
     <>
-      <div className="flex  m-4 p-4 w-[100%]">
-        <button
-          onClick={() => topRatedResturant()}
-          className="border border-gray-600 rounded-lg px-2 justify-start"
-        >
-          Top Rated
-        </button>
-        <input
-          className="border border-gray-600 rounded-l-xl px-2 justify-center"
-          onChange={(e) => setInputText(e.target.value)}
-          type="text"
-          placeholder="Find Resturant"
-          value={inputText}
-        />
-        <button
-          onClick={() => filterResturantOnName()}
-          className="border border-gray-600 rounded-r-xl px-2 py-1"
-        >
-          <IoSearchOutline />
-        </button>
+      <div className="flex justify-center items-center py-2 bg-orange-50">
+        <div className="flex items-center gap-3 bg-white p-6 rounded-xl shadow-lg">
+          <button
+            onClick={() => topRatedResturant()}
+            className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-lg transition duration-200 shadow-sm"
+          >
+            Top Rated Resturant
+          </button>
+
+          <div className="flex items-center border border-orange-500 rounded-lg overflow-hidden shadow-sm">
+            <input
+              className="px-4 py-2 focus:outline-none text-gray-700"
+              onChange={(e) => setInputText(e.target.value)}
+              type="text"
+              placeholder="Find Restaurant"
+              value={inputText}
+            />
+            <button
+              onClick={() => filterResturantOnName()}
+              className="bg-white border-l border-orange-500 text-orange-500 px-3 py-2 hover:bg-orange-100 active:scale-95 active:bg-orange-200 transition duration-150 rounded-r-lg"
+            >
+              <IoSearchOutline size={20} />
+            </button>
+          </div>
+        </div>
       </div>
 
       {listOfResturant.length === 0 ? (
