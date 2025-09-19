@@ -7,15 +7,11 @@ import { IoSearchOutline } from "react-icons/io5";
 const Body = () => {
   const [inputText, setInputText] = useState("");
 
-  const {
-    listOfResturant,
-    setListOfResturant,
-    filteredResturant,
-    setFilteredResturant,
-  } = useResturantData(); // Custom hook for fetching the swiggy API
+  const { listOfResturant, filteredResturant, setFilteredResturant } =
+    useResturantData(); // Custom hook for fetching the swiggy API
 
   const topRatedResturant = () => {
-    setListOfResturant(
+    setFilteredResturant(
       listOfResturant.filter(
         (item) => item?.info?.avgRating > 4.5
       ) /* Filtering the Resturant which has avgRating > 4.5 
@@ -29,8 +25,9 @@ const Body = () => {
     ); //filter the resturant based name
     setFilteredResturant(filtered);
   };
-  if (!listOfResturant) return;
 
+  if (!listOfResturant) return;
+  if (!filteredResturant) return;
   return (
     <>
       <div className="flex  m-4 p-4 w-[100%]">
