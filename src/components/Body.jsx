@@ -24,6 +24,7 @@ const Body = () => {
       item?.info?.name.toLowerCase().includes(inputText.toLowerCase())
     ); //filter the resturant based name
     setFilteredResturant(filtered);
+    setInputText(""); // empties the input search after search is clicked
   };
 
   if (!listOfResturant) return;
