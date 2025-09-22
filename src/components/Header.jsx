@@ -5,7 +5,9 @@ const Header = () => {
   return (
     <>
       <div className="flex items-center justify-between p-4 bg-white shadow-md">
-        <img className="h-auto w-[80px]" src="/tummyFuel.png" alt="logo" />
+        <Link to="/">
+          <img className="h-auto w-[80px]" src="/tummyFuel.png" alt="logo" />
+        </Link>
 
         <ul className="flex space-x-6 text-gray-800">
           <Link to={"/"}>
