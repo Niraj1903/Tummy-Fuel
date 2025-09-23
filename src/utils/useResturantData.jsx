@@ -1,21 +1,20 @@
 import { useEffect, useState } from "react";
 import { SWIGGY_API } from "./constants";
+import axios from "axios";
 
 const useResturantData = () => {
   const [listOfResturant, setListOfResturant] = useState([]);
   const [filteredResturant, setFilteredResturant] = useState([]);
 
   const fetchData = async () => {
-    const data = await fetch(SWIGGY_API);
-    const jsonData = await data.json();
-    setListOfResturant(
-      jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-    setFilteredResturant(
-      jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
+    const response = await axios.get(SWIGGY_API);
+
+    const resturantData =
+      response?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
+
+    setListOfResturant(resturantData);
+    setFilteredResturant(resturantData);
   };
 
   useEffect(() => {
