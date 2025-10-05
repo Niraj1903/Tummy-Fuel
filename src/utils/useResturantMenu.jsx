@@ -6,8 +6,17 @@ const useResturantMenu = () => {
   const [restMenu, setRestMenu] = useState([]);
 
   const fetchData = async () => {
-    const { data } = await axios.get(REST_MENU);
-    setRestMenu(data?.data);
+    try {
+      const { data } = await axios.get(REST_MENU);
+
+      const result = data?.data?.cards.find((item) =>
+        item?.card?.card["@type"].includes("food.v2.Restaurant")
+      )?.card?.card?.info;
+
+      setRestMenu(result);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   useEffect(() => {
